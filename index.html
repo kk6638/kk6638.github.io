@@ -1,124 +1,947 @@
-
 <!DOCTYPE html>
-<html lang="zh">
-
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlobalLink SaaS - 中英双语版</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #f4f7fc; color: #1f2937; margin:0; padding:0; }
+    header, section, footer { max-width:1200px; margin:auto; padding:80px 20px; text-align:center; }
+    h1 { font-size:52px; color:#3b82f6; margin-bottom:20px; }
+    p { font-size:18px; color:#64748b; margin-bottom:20px; }
+    .btn { display:inline-block; margin-top:30px; padding:16px 36px; background:#3b82f6; color:#fff; border-radius:8px; text-decoration:none; transition:0.3s; }
+    .btn:hover { background:#2563eb; }
+    .cards, .pricing, .pay-list { display:grid; gap:30px; margin-top:40px; }
+    .cards { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card, .price-box, .pay-item { background:#fff; padding:30px; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,0.08); }
+    .card:hover, .price-box:hover { transform: translateY(-5px); box-shadow:0 8px 30px rgba(0,0,0,0.15); }
+    .price-box { text-align:center; border:1px solid #e2e8f0; }
+    .price-box h3, .card h3 { color:#3b82f6; margin-bottom:15px; }
+    .price { font-size:42px; color:#3b82f6; margin:20px 0; }
+    ul { list-style:none; margin:20px 0; color:#64748b; }
+    .pay-list { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+    .pay-item { font-weight:600; color:#1e40af; }
+    .notice { margin-top:30px; font-size:14px; color:#64748b; }
+    .lang-toggle { position:fixed; top:20px; right:20px; background:#3b82f6; color:#fff; padding:10px 20px; border-radius:8px; cursor:pointer; }
   
-  <!-- 名称 -->
-  <title>kk6638</title>
-  <!-- 简介 -->
-  <meta name="description" content="Hi，我是kk3368，是一个自媒体博主。">
+
+    .social-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .social-card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 28px;
+      padding: 40px 20px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: 0.35s ease;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .social-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 45px rgba(59,130,246,0.18);
+    }
+
+    .social-card img {
+      width: 88px;
+      height: 88px;
+      object-fit: contain;
+      margin-bottom: 24px;
+      border-radius: 24px;
+    }
+
+    .social-card span {
+      font-size: 20px;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .youtube-card {
+      max-width: 260px;
+    }
+
+    @media (max-width: 768px) {
+      header, section, footer {
+        padding: 50px 16px;
+      }
+
+      h1 {
+        font-size: 36px;
+        line-height: 1.2;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      p {
+        font-size: 15px;
+      }
+
+      .btn {
+        width: 100%;
+        display: block;
+        text-align: center;
+        padding: 14px 20px;
+      }
+
+      .cards,
+      .pricing,
+      .pay-list {
+        grid-template-columns: 1fr;
+      }
+
+      .card,
+      .price-box,
+      .pay-item {
+        padding: 24px;
+      }
+
+      .price {
+        font-size: 36px;
+      }
+
+      .lang-toggle {
+        top: 12px;
+        right: 12px;
+        padding: 8px 14px;
+        font-size: 14px;
+      }
+    }
   
-  <link rel="shortcut icon" href="image/520.jpg" type="image/webp">
-  <link rel="stylesheet" href="https://gw.alipayobjects.com/os/k/font/lxgwwenkaiscreenr.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/style.css">
 
-	<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J3PMCP1TP1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+/* 导航栏 */
 
-  gtag('config', 'G-J3PMCP1TP1');
-</script>
-	
-	<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "qxq6wgln6p");
-</script>
+.navbar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:24px 60px;
+background:rgba(255,255,255,.7);
+backdrop-filter:blur(12px);
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo{
+font-size:34px;
+font-weight:800;
+background:linear-gradient(90deg,#2563eb,#7c3aed);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+display:flex;
+gap:40px;
+}
+
+.nav-links a{
+text-decoration:none;
+font-size:18px;
+font-weight:600;
+color:#0f172a;
+}
+
+.lang-select{
+padding:12px 20px;
+border:none;
+border-radius:14px;
+background:white;
+font-size:16px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+/* hero */
+
+.hero{
+padding:120px 40px 80px;
+text-align:center;
+background:
+radial-gradient(circle at top left,#dbeafe 0%,transparent 30%),
+radial-gradient(circle at top right,#ede9fe 0%,transparent 30%),
+#f8fbff;
+}
+
+.hero-tag{
+display:inline-block;
+padding:12px 24px;
+border-radius:999px;
+background:white;
+color:#4f46e5;
+font-weight:700;
+margin-bottom:30px;
+box-shadow:0 10px 30px rgba(99,102,241,.1);
+}
+
+.hero h1{
+font-size:90px;
+font-weight:900;
+line-height:1.05;
+margin-bottom:24px;
+color:#0f172a;
+}
+
+.hero h1 span{
+background:linear-gradient(90deg,#2563eb,#9333ea);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+font-size:24px;
+max-width:900px;
+margin:auto;
+color:#64748b;
+line-height:1.8;
+}
+
+.hero-buttons{
+display:flex;
+gap:20px;
+justify-content:center;
+margin-top:50px;
+}
+
+.primary-btn,
+.secondary-btn{
+padding:18px 36px;
+font-size:20px;
+font-weight:700;
+border-radius:18px;
+text-decoration:none;
+transition:.3s;
+}
+
+.primary-btn{
+background:linear-gradient(90deg,#2563eb,#7c3aed);
+color:white;
+box-shadow:0 15px 35px rgba(99,102,241,.25);
+}
+
+.secondary-btn{
+background:white;
+color:#0f172a;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{
+transform:translateY(-5px);
+}
+
+/* 联系区域 */
+
+.social-section{
+max-width:1400px;
+margin:auto;
+padding:100px 40px;
+}
+
+.social-header{
+text-align:center;
+margin-bottom:70px;
+}
+
+.tag{
+display:inline-block;
+padding:10px 24px;
+border-radius:30px;
+background:white;
+color:#4f46e5;
+font-weight:700;
+font-size:14px;
+box-shadow:0 8px 25px rgba(99,102,241,.12);
+margin-bottom:30px;
+}
+
+.social-header h2{
+font-size:72px;
+font-weight:800;
+margin-bottom:20px;
+color:#0f172a;
+}
+
+.social-header h2 span{
+background:linear-gradient(90deg,#2563eb,#9333ea);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.social-header p{
+font-size:24px;
+color:#64748b;
+}
+
+.social-row{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+background:rgba(255,255,255,.75);
+backdrop-filter:blur(16px);
+border-radius:36px;
+padding:26px 30px;
+box-shadow:0 10px 40px rgba(15,23,42,.06);
+}
+
+.social-btn{
+display:flex;
+align-items:center;
+gap:14px;
+text-decoration:none;
+padding:14px 20px;
+border-radius:20px;
+transition:.3s;
+min-width:180px;
+justify-content:center;
+}
+
+.social-btn:hover{
+background:white;
+transform:translateY(-4px);
+box-shadow:0 12px 30px rgba(37,99,235,.12);
+}
+
+.social-btn img{
+width:42px;
+height:42px;
+object-fit:contain;
+}
+
+.social-btn span{
+font-size:22px;
+font-weight:700;
+color:#0f172a;
+}
+
+/* 移动端 */
+
+@media(max-width:768px){
+
+.navbar{
+padding:18px 20px;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.nav-links{
+display:none;
+}
+
+.hero{
+padding:80px 20px;
+}
+
+.hero h1{
+font-size:52px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.social-header h2{
+font-size:46px;
+}
+
+.social-header p{
+font-size:18px;
+}
+
+.social-row{
+padding:18px;
+gap:14px;
+}
+
+.social-btn{
+width:100%;
+min-width:unset;
+justify-content:flex-start;
+}
+
+.social-btn span{
+font-size:18px;
+}
+
+}
+
+</style>
 </head>
-
 <body>
-  <div class="min-h-full flex flex-center container">
-    <div class="page-full-wrap relative">
-      <div class="flex relative top-sec"></div>
-	  
-	  <!-- 头像 -->
-      <img id="displayImage" class="display-image m-auto" src="image/520.jpg" alt role="presentation">
-	  
-      <!-- 名称 -->
-	  <h1 class="page-title page-text-color page-text-font mt-16 text-center">kk3368</h1>
-	  
-	  
-	  <!-- 简介 -->
-      <h2 class="page-bioline page-text-color page-text-font mt-12 ln-h-22 text-center">是一个自媒体博主。</h2>
-	  
-	  
-      <div class="mt-28">
-		
-		<!-- 抖音开始 -->
-		<div class="page-item-wrap relative">
-          <div class="page-item flex flex-center absolute"></div>
-          <a target="_blank" rel="noopener nofollow" class="page-item-each py-10 flex flex-center" href="https://www.douyin.com/user/MS4wLjABAAAA8WEPx2Z5i0-VpZdg0_7jZmWA-IcKQtAFnaC7YBcUZIk?from_tab_name=main">
-            <img class="link-each-image" src="image/douyin.png" alt="抖音">
-            <span class="item-title text-center">抖音</span>
-          </a>
-        </div>
-		<!-- 抖音结束 -->
-		
-		
-		<!-- 小红书开始 -->
-        <div class="page-item-wrap relative">
-          <div class="page-item flex flex-center absolute"></div>
-          <a target="_blank" rel="noopener nofollow" class="page-item-each py-10 flex flex-center" href="https://www.xiaohongshu.com/user/profile/63db4526000000002601115a">
-            <img class="link-each-image" src="image/xiaohongshu.png" alt="小红书">
-            <span class="item-title text-center">小红书</span>
-          </a>
-        </div>
-		<!-- 小红书结束 -->
-		
-		<!-- bilibili开始 -->
-		<div class="page-item-wrap relative">
-          <div class="page-item flex flex-center absolute"></div>
-          <a target="_blank" rel="noopener nofollow" class="page-item-each py-10 flex flex-center" href="https://space.bilibili.com/588031807">
-            <img class="link-each-image" src="image/bilibili.png" alt="bilibili">
-            <span class="item-title text-center">bilibili</span>
-          </a>
-        </div>
-		<!-- bilibili结束 -->
-		
-		<!-- 快手开始 -->
-		<div class="page-item-wrap relative">
-          <div class="page-item flex flex-center absolute"></div>
-          <a target="_blank" rel="noopener nofollow" class="page-item-each py-10 flex flex-center" href="https://www.kuaishou.com/profile/3x3bxzxu9d5urau">
-            <img class="link-each-image" src="image/kuaishou.png" alt="快手">
-            <span class="item-title text-center">快手</span>
-          </a>
-        </div>
-		<!-- 快手结束 -->
-		
-	  
-		<!-- Github开始 -->
-        <div class="page-item-wrap relative">
-          <div class="page-item flex flex-center absolute"></div>
-          <a target="_blank" rel="noopener nofollow" class="page-item-each py-10 flex flex-center" href="https://github.com/PengGeGe18">
-            <img class="link-each-image" src="image/github.png" alt="Github">
-            <span class="item-title text-center">Github</span>
-          </a>
-        </div>
-		<!-- Github结束 -->
-		
-		
-		<!-- 微博开始 -->
-        <div class="page-item-wrap relative">
-          <div class="page-item flex flex-center absolute"></div>
-          <a target="_blank" rel="noopener nofollow" class="page-item-each py-10 flex flex-center" href="https://weibo.com/u/2732442644">
-            <img class="link-each-image" src="image/weibo.png" alt="微博">
-            <span class="item-title text-center">微博</span>
-          </a>
-        </div>
-		<!-- 微博结束 -->
-		
-		
-      </div>
+
+<!-- 顶部导航 -->
+<nav class="navbar">
+  <div class="logo">GlobalLink</div>
+
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <select class="lang-select">
+    <option>EN</option>
+    <option>中文</option>
+    <option>日本語</option>
+    <option>한국어</option>
+  </select>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+
+  <div class="hero-content">
+
+    <span class="hero-tag">GLOBAL NETWORK SERVICE</span>
+
+    <h1>
+      Connect <span>Worldwide</span>
+    </h1>
+
+    <p>
+      Enterprise-grade global acceleration solutions for remote work,
+      cross-border business and secure worldwide connectivity.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#pricing" class="primary-btn">Get Started</a>
+      <a href="#contact" class="secondary-btn">Contact Us</a>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- 社交区域 -->
+<section class="social-section" id="contact">
+
+  <div class="social-header">
+    <span class="tag">CONTACT US</span>
+
+    <h2>
+      Connect <span>With Us</span>
+    </h2>
+
+    <p>
+      Join our global community across multiple platforms.
+    </p>
+  </div>
+
+  <div class="social-row">
+
+    <a href="https://t.me/yourtelegram" class="social-btn" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png">
+      <span>Telegram</span>
+    </a>
+
+    <a href="https://instagram.com/yourinstagram" class="social-btn" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
+      <span>Instagram</span>
+    </a>
+
+    <a href="https://x.com/yourx" class="social-btn" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png">
+      <span>X / Twitter</span>
+    </a>
+
+    <a href="https://discord.gg/yourdiscord" class="social-btn" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png">
+      <span>Discord</span>
+    </a>
+
+    <a href="mailto:support@yourdomain.com" class="social-btn">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
+      <span>Email</span>
+    </a>
+
+    <a href="https://youtube.com/@yourchannel" class="social-btn" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+      <span>YouTube</span>
+    </a>
+
+  </div>
+
+</section>
+
+<select class="lang-toggle" onchange="changeLanguage(this.value)">
+  <option value="zh">中文</option>
+  <option value="en">English</option>
+  <option value="ja">日本語</option>
+  <option value="ko">한국어</option>
+  <option value="fr">Français</option>
+  <option value="de">Deutsch</option>
+  <option value="es">Español</option>
+</select>
+
+<header>
+  <h1 data-en="GlobalLink SaaS" data-zh="GlobalLink SaaS">GlobalLink SaaS</h1>
+  <p data-en="Enterprise-level global network acceleration & cross-border access solutions." data-zh="提供企业级全球网络加速与跨境访问解决方案。">提供企业级全球网络加速与跨境访问解决方案。</p>
+  <a href="#pricing" class="btn" data-en="View Plans" data-zh="查看套餐">查看套餐</a>
+</header>
+
+<section>
+  <h2 data-en="Features" data-zh="服务特点">服务特点</h2>
+  <p data-en="Reliable and flexible for enterprises" data-zh="企业级服务，灵活可靠">企业级服务，灵活可靠</p>
+  <div class="cards">
+    <div class="card">
+      <h3 data-en="Global Nodes" data-zh="全球节点">全球节点</h3>
+      <p data-en="Coverage in North America, Europe, Asia." data-zh="覆盖北美、欧洲、亚洲等主要地区，保障跨境业务畅通。">覆盖北美、欧洲、亚洲等主要地区，保障跨境业务畅通。</p>
+    </div>
+    <div class="card">
+      <h3 data-en="High Speed & Stable" data-zh="高速稳定">高速稳定</h3>
+      <p data-en="Optimized routing & low latency." data-zh="优化线路与智能负载均衡，提供低延迟、稳定网络体验。">优化线路与智能负载均衡，提供低延迟、稳定网络体验。</p>
+    </div>
+    <div class="card">
+      <h3 data-en="Multi-platform" data-zh="多平台兼容">多平台兼容</h3>
+      <p data-en="Supports Windows, macOS, iOS, Android." data-zh="支持 Windows、macOS、iOS、Android 多终端接入。">支持 Windows、macOS、iOS、Android 多终端接入。</p>
+    </div>
+    <div class="card">
+      <h3 data-en="Enterprise Support" data-zh="企业支持">企业支持</h3>
+      <p data-en="Dedicated support 24/7." data-zh="专属客服与技术团队，7x24 小时响应企业需求。">专属客服与技术团队，7x24 小时响应企业需求。</p>
     </div>
   </div>
-</body>
+</section>
 
+<section id="pricing">
+  <h2 data-en="Pricing Plans" data-zh="套餐价格">套餐价格</h2>
+  <p data-en="Flexible subscriptions for different needs" data-zh="灵活订阅，满足不同企业需求">灵活订阅，满足不同企业需求</p>
+  <div class="pricing">
+    <div class="price-box">
+      <h3 data-en="Monthly Plan" data-zh="月付方案">月付方案</h3>
+      <div class="price">$9.9</div>
+      <ul>
+        <li data-en="1000GB High-Speed" data-zh="1000GB 高速流量">1000GB 高速流量</li>
+        <li data-en="Global Nodes" data-zh="全球节点">全球节点</li>
+        <li data-en="Up to 5 devices" data-zh="支持5台设备">支持5台设备</li>
+        <li data-en="24/7 Enterprise Support" data-zh="7x24 企业支持">7x24 企业支持</li>
+      </ul>
+      <a href="#payment" class="btn" data-en="Subscribe Now" data-zh="立即订阅">立即订阅</a>
+    </div>
+    <div class="price-box">
+      <h3 data-en="Quarterly Plan" data-zh="季度方案">季度方案</h3>
+      <div class="price">$25.9</div>
+      <ul>
+        <li data-en="Unlimited speed" data-zh="不限速连接">不限速连接</li>
+        <li data-en="Priority routing" data-zh="优先线路">优先线路</li>
+        <li data-en="Up to 10 devices" data-zh="支持10台设备">支持6台设备</li>
+        <li data-en="Dedicated support" data-zh="专属客服支持">专属客服支持</li>
+      </ul>
+      <a href="#payment" class="btn" data-en="Subscribe Now" data-zh="立即订阅">立即订阅</a>
+    </div>
+    <div class="price-box">
+      <h3 data-en="Annual Plan" data-zh="年度方案">年度方案</h3>
+      <div class="price">$89.9</div>
+      <ul>
+        <li data-en="Year-round discount" data-zh="全年优惠价格">全年优惠价格</li>
+        <li data-en="Premium lines" data-zh="高级专线">高级专线</li>
+        <li data-en="Unlimited devices" data-zh="不限设备数量">不限设备数量</li>
+        <li data-en="VIP support" data-zh="VIP 技术支持">VIP 技术支持</li>
+      </ul>
+      <a href="#payment" class="btn" data-en="Subscribe Now" data-zh="立即订阅">立即订阅</a>
+    </div>
+  </div>
+</section>
+
+<section id="payment">
+  <h2 data-en="Payment Methods" data-zh="支付方式">支付方式</h2>
+  <p data-en="Supports global users" data-zh="支持全球用户支付">支持全球用户支付</p>
+  <div class="pay-list">
+    <div class="pay-item">Stripe</div>
+    <div class="pay-item">PayPal</div>
+    <div class="pay-item">Visa / MasterCard</div>
+    <div class="pay-item">Apple Pay</div>
+    <div class="pay-item">Google Pay</div>
+    <div class="pay-item">USDT (TRC20)</div>
+  </div>
+  <div class="notice" data-en="Legal notice" data-zh="使用须知">本网站提供国际网络连接与跨境办公加速服务，仅面向遵守当地法律法规的用户使用。用户需自行确认所在地区相关法律政策，并合法合规使用网络服务。</div>
+</section>
+
+<footer>
+  <p>© 2026 GlobalLink SaaS. All Rights Reserved.</p>
+<section id="contact">
+  <h2 data-en="Contact Us" data-zh="联系我们">联系我们</h2>
+  <p data-en="Connect with us through international social platforms" data-zh="通过国际社交平台与我们联系">通过国际社交平台与我们联系</p>
+
+  <div class="pay-list social-grid">
+    <a class="social-card" href="https://t.me/yourtelegram" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
+      <span>Telegram</span>
+    </a>
+
+    <a class="social-card" href="https://instagram.com/yourinstagram" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+      <span>Instagram</span>
+    </a>
+
+    <a class="social-card" href="https://x.com/yourx" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="X">
+      <span>X / Twitter</span>
+    </a>
+
+    <a class="social-card" href="https://discord.gg/yourdiscord" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord">
+      <span>Discord</span>
+    </a>
+
+    <a class="social-card" href="mailto:support@yourdomain.com">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+      <span>Email</span>
+    </a>
+
+    <a class="social-card youtube-card" href="https://youtube.com/@yourchannel" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+      <span>YouTube</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 GlobalLink SaaS. All Rights Reserved.</p>
+</footer>
+
+<script>
+const translations = {
+  zh: {
+    features: '服务特点',
+    pricing: '套餐价格',
+    payment: '支付方式',
+    contact: '联系我们',
+    plans: '查看套餐'
+  },
+  en: {
+    features: 'Features',
+    pricing: 'Pricing Plans',
+    payment: 'Payment Methods',
+    contact: 'Contact Us',
+    plans: 'View Plans'
+  },
+  ja: {
+    features: '特徴',
+    pricing: '料金プラン',
+    payment: '支払い方法',
+    contact: 'お問い合わせ',
+    plans: 'プランを見る'
+  },
+  ko: {
+    features: '서비스 특징',
+    pricing: '요금제',
+    payment: '결제 방법',
+    contact: '문의하기',
+    plans: '요금제 보기'
+  },
+  fr: {
+    features: 'Fonctionnalités',
+    pricing: 'Tarifs',
+    payment: 'Méthodes de paiement',
+    contact: 'Contactez-nous',
+    plans: 'Voir les offres'
+  },
+  de: {
+    features: 'Funktionen',
+    pricing: 'Preise',
+    payment: 'Zahlungsmethoden',
+    contact: 'Kontakt',
+    plans: 'Preise ansehen'
+  },
+  es: {
+    features: 'Características',
+    pricing: 'Planes de precios',
+    payment: 'Métodos de pago',
+    contact: 'Contáctanos',
+    plans: 'Ver planes'
+  }
+};
+
+function changeLanguage(lang) {
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const keyZh = el.getAttribute('data-zh');
+    const keyEn = el.getAttribute('data-en');
+
+    if(lang === 'zh') {
+      el.textContent = keyZh;
+    } else if(lang === 'en') {
+      el.textContent = keyEn;
+    } else {
+      // 其它语言默认使用英文
+      el.textContent = keyEn;
+    }
+  });
+
+  document.documentElement.lang = lang;
+}
+</script>
+
+</body>
 </html>
+<!-- =========================
+官方客服 Telegram（带二维码）
+放到 </body> 前
+========================= -->
+
+<!-- Telegram 客服按钮 -->
+
+<div class="telegram-service">
+
+  <!-- 点击按钮 -->
+
+  <div class="telegram-main">
+
+    <img
+    src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"
+    alt="Telegram">
+
+    <span data-key="telegramSupport">
+      官方客服
+    </span>
+
+  </div>
+
+  <!-- 二维码 -->
+
+  <div class="telegram-qr">
+
+    <!-- 替换成你的二维码图片 -->
+
+    <img
+    src="telegram-qr.png"
+    alt="Telegram QR">
+
+    <p>
+      @KKSHAN
+    </p>
+
+  </div>
+
+</div>
+
+<style>
+
+/* =========================
+Telegram 客服
+========================= */
+
+.telegram-service{
+
+position:fixed;
+
+right:24px;
+bottom:24px;
+
+z-index:99999;
+}
+
+/* 主按钮 */
+
+.telegram-main{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:14px 20px;
+
+border-radius:18px;
+
+background:
+rgba(15,23,42,.88);
+
+backdrop-filter:blur(16px);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+cursor:pointer;
+
+box-shadow:
+0 12px 40px rgba(0,0,0,.35);
+
+transition:.35s;
+}
+
+/* Hover */
+
+.telegram-main:hover{
+
+transform:
+translateY(-4px);
+
+background:
+rgba(30,41,59,.96);
+}
+
+/* 图标 */
+
+.telegram-main img{
+
+width:30px;
+height:30px;
+}
+
+/* 文字 */
+
+.telegram-main span{
+
+font-size:15px;
+
+font-weight:700;
+
+color:white;
+}
+
+/*https://chatgpt.com/backend-api/estuary/content?id=file_000000004ac071f89eea681e67cee805&ts=494310&p=fs&cid=1&sig=65528b919b53dbad09afabfb765f8bfcab166e3ae67393a7dd963899b76518dc&v=0*/
+
+.telegram-qr{
+
+position:absolute;
+
+bottom:80px;
+right:0;
+
+width:220px;
+
+padding:18px;
+
+border-radius:24px;
+
+background:white;
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.35);
+
+opacity:0;
+
+visibility:hidden;
+
+transform:
+translateY(20px);
+
+transition:.35s;
+}
+
+/* Hover 显示 */
+
+.telegram-service:hover
+.telegram-qr{
+
+opacity:1;
+
+visibility:visible;
+
+transform:
+translateY(0);
+}
+
+/*https://chatgpt.com/backend-api/estuary/content?id=file_000000004ac071f89eea681e67cee805&ts=494310&p=fs&cid=1&sig=65528b919b53dbad09afabfb765f8bfcab166e3ae67393a7dd963899b76518dc&v=0*/
+
+.telegram-qr img{
+
+width:100%;
+
+border-radius:18px;
+}
+
+/* 用户名 */
+
+.telegram-qr p{
+
+margin-top:14px;
+
+text-align:center;
+
+font-size:18px;
+
+font-weight:800;
+
+color:#0f172a;
+}
+
+/* 手机端 */
+
+@media(max-width:768px){
+
+.telegram-service{
+
+right:16px;
+bottom:16px;
+}
+
+.telegram-main{
+
+padding:12px 16px;
+}
+
+.telegram-main span{
+
+display:none;
+}
+
+.telegram-qr{
+
+width:180px;
+}
+
+}
+
+</style>
+
+<!-- =========================
+多语言追加
+加到 translations 内
+========================= -->
+
+<script>
+
+/* 中文 */
+
+translations.zh.telegramSupport =
+"官方客服";
+
+/* 英文 */
+
+translations.en.telegramSupport =
+"Official Support";
+
+/* 日文 */
+
+translations.ja.telegramSupport =
+"公式サポート";
+
+/* 韩文 */
+
+translations.ko.telegramSupport =
+"공식 고객지원";
+
+/* 法文 */
+
+translations.fr.telegramSupport =
+"Support officiel";
+
+/* 德文 */
+
+translations.de.telegramSupport =
+"Offizieller Support";
+
+/* 西班牙文 */
+
+translations.es.telegramSupport =
+"Soporte Oficial";
+
+</script>
